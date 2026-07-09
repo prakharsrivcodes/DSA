@@ -1,38 +1,24 @@
+// class Solution {
+// public:
+//     bool isAnagram(string s, string t) {
 
-// optimal
-#include <iostream>
-#include <unordered_map>
-using namespace std;
+//         if (s.length() != t.length())
+//             return false;
 
-bool isAnagram(string s, string t)
-{
+//         unordered_map<char, int> mpp;
 
-    if (s.length() != t.length())
-        return false;
+//         for (char ch : s)
+//             mpp[ch]++;
 
-    unordered_map<char, int> mpp;
+//         for (char ch : t)
+//             mpp[ch]--;
 
-    for (char ch : s)
-        mpp[ch]++;
+//         for (auto it : mpp) {
 
-    for (char ch : t)
-        mpp[ch]--;
+//             if (it.second != 0)
+//                 return false;
+//         }
 
-    for (auto it : mpp)
-    {
-
-        if (it.second != 0)
-            return false;
-    }
-
-    return true;
-}
-
-int main()
-{
-
-    string s = "anagram";
-    string t = "nagaram";
-
-    cout << isAnagram(s, t);
-}
+//         return true;
+//     }
+// };
