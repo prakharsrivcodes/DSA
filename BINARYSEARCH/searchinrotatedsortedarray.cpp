@@ -55,25 +55,26 @@ int main()
 
     return 0;
 }
+
 // for duplicates
 #include <iostream>
 #include <vector>
 using namespace std;
 
-bool search(vector<int>& arr, int n, int k)
+bool search(vector<int> &arr, int n, int k)
 {
     int low = 0;
     int high = n - 1;
 
-    while(low <= high)
+    while (low <= high)
     {
         int mid = low + (high - low) / 2;
 
-        if(arr[mid] == k)
+        if (arr[mid] == k)
             return true;
 
         // Can't identify the sorted half
-        if(arr[low] == arr[mid] && arr[mid] == arr[high])
+        if (arr[low] == arr[mid] && arr[mid] == arr[high])
         {
             low++;
             high--;
@@ -81,9 +82,9 @@ bool search(vector<int>& arr, int n, int k)
         }
 
         // Left half is sorted
-        if(arr[low] <= arr[mid])
+        if (arr[low] <= arr[mid])
         {
-            if(arr[low] <= k && k <= arr[mid])
+            if (arr[low] <= k && k <= arr[mid])
             {
                 high = mid - 1;
             }
@@ -96,7 +97,7 @@ bool search(vector<int>& arr, int n, int k)
         // Right half is sorted
         else
         {
-            if(arr[mid] <= k && k <= arr[high])
+            if (arr[mid] <= k && k <= arr[high])
             {
                 low = mid + 1;
             }
@@ -112,12 +113,12 @@ bool search(vector<int>& arr, int n, int k)
 
 int main()
 {
-    vector<int> arr = {2,5,6,0,0,1,2};
+    vector<int> arr = {2, 5, 6, 0, 0, 1, 2};
 
     int target;
     cin >> target;
 
-    if(search(arr, arr.size(), target))
+    if (search(arr, arr.size(), target))
         cout << "Found";
     else
         cout << "Not Found";
